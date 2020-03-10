@@ -23,7 +23,7 @@ export default {
           name: "这是name",
           // 波浪
           data: [{
-            name: '60%',
+            name: '50%',
             value: 0.6
           }, 0.5, 0.4, 0.3],
           // 波浪的颜色
