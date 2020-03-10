@@ -1,5 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
+import echarts from 'echarts'
+import 'echarts-liquidfill'
+
+Vue.prototype.$echarts = echarts
 
 Vue.config.productionTip = false
 

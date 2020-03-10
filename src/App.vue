@@ -1,28 +1,66 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div ref="demo" id="echarts-demo"></div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
+  data() {
+    return {}
+  },
+  mounted() {
+    this.draw();
+  },
+  methods: {
+    draw() {
+      let container = document.getElementById("echarts-demo")
+      let chart = this.$echarts.init(container);
+      let options = {
+        series: [{
+          type: 'liquidFill',
+          name: "这是name",
+          // 波浪
+          data: [{
+            name: '60%',
+            value: 0.6
+          }, 0.5, 0.4, 0.3],
+          // 波浪的颜色
+          //color: ["red", "yellow", "blue", "orange"],
+          // 文字样式
+          label: {
+            formatter: '{b}',
+            fontSize: 60,
+            color: 'red',
+            insideColor: 'yellow'
+          },
+        }],
+        // 浮窗
+        tooltip: {
+          show: true
+        }
+      }
+      chart.setOption(options);
+    }
+  },
   components: {
-    HelloWorld
   }
 }
 </script>
 
 <style>
+* {
+  margin: 0; padding: 0;
+}
+html, body, #app {
+  height: 100%; height: 100%;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  display: flex; justify-content: center; align-items: center;
+}
+
+#echarts-demo {
+  width: 600px; height: 600px;
 }
 </style>
